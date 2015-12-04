@@ -20,3 +20,7 @@ iconv -f ISO-8859-1 (a formatação original) -t UTF-8 (a formatação pretendid
 Ainda que já no padrão UTF-8, o novo CSV ainda tem dificuldades com caracteres especiais. Para resolver isso, usaremos o Google Refine. Abra o programa, selecione Create Project e importe o CSV. O Refine mostrará algumas das primeiras linhas da tabela. Se parecer uma tabela, ótimo. Se não, selecione ou separados para as colunas (vírgula, tab ou custom). Na barra de baixo, escolha a formatação UTF-8. Crie o projeto no canto superior direito. Renomeie toda as colunas para que não tenham espaços entre as nomes (só precisa mudar o nome da coluna, não o conteúdo). Isso facilitará muito ao usar o csvkit para se referir a determinada coluna.
 
 Com o projeto pronto, clique em Export, Comma-separated values. Esse banco de dados está pronto para ser trabalhado. 
+
+Se o banco de dados é grande demais para abrir no Refine e suas colunas estão separadas por ponto e vírgulo, e não vírgulas, use o comando sed:
+
+$ sed 's/;/,/g' nome_antigo > nome_novo
